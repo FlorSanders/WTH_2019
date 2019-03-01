@@ -1,0 +1,5 @@
+name;pos_id;price;category;eco;nutri
+carrot;A;0.5;vegetables;A;A
+tomato;A;0.25;vegetables;A;A
+avocado;B;1.25;vegetables;D;B
+bread;E;2;grains;B;C
