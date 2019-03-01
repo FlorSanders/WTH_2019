@@ -41,35 +41,38 @@ class supermarket:
              
 class shoppinglist:
     #Initialisation function
-    def __init___(self, items):
+    def __init__(self, items):
         self.items = list(items)
-    def categories(self):
+    def __repr__(self):                                         
+        return "%s" %(self.items)                               #Makes it so the list variable actually can be printed
+    def categories(self):                                       
         return set([item.cat for item in self.items])           #Returns a set with all the unique categories of the items on the shoppinglist
     def pos_ids(self):
         return set([item.pos_id for item in self.items])        #Returns a set with all the unique position ids for the items on the shoppinglist
     def add_to_list(self, add_item):
-        self.items.append(add_item)
-
-#Function: takes input file from csv with all the item variables, and initialising them, along with the supermarket.
-def items_sm_from_file(filename, market):
-    #Opening the file
-    with open(filename, 'r') as infile:
-        content = list(csv.reader(infile, delimiter = ';'))
-        items = []
-        cats = []
-        for i in range(1, len(content)):
-            vars()[content[i][0]] = item(content[i][0], content[i][1], content[i][2], content[i][3], content[i][4], content[i][4]) #Initialising the item
-            #Adding the items and the categories into a list
-            print(content[i][0])
-            items.append(vars()[content[i][0]])
-            cats.append(vars()[content[i][0]].cat)
-        #Updating the markets to add the new items and categories
-        market.items = market.items.union(set(items))
-        market.cats = market.cats.union(set(cats))
+        self.items.append(add_item)                             #Adds an item to the shopping list
+    def rem_from_list(self, rem_item):
+        if rem_item in self.items:                              #Checks whether the item is in the shopping list
+            self.items.remove(rem_item)                         #And removes it if it is
 
 
+##################"TESTING AREA"#############################
+#Don't mind me, just initializing a few variables for testing
 market = supermarket([],[])
+slist = shoppinglist([])
+
 market.sm_from_file("supermarket.txt")
 market.update_cats()
 print(market.get_items())
 print(market.get_categories())
+
+#Don't mind me, just testing the shopping_list functionality
+its = market.get_items()
+for i in range(len(its)):
+    if(i % 2):
+        slist.add_to_list(its[i])
+
+print(slist)
+slist.rem_from_list(its[1])
+print(slist)
+print(slist.pos_ids())
