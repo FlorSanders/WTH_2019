@@ -1,9 +1,35 @@
-name;pos_id;price;category;type;eco;nutri
-winter carrot;A;0.5;vegetables;carrot;A;A
-large tomato;A;0.25;vegetables;tomato;A;A
-1brand avocado;B;1.25;vegetables;avocado;D;B
-white bread;E;2;grains;bread;B;C
-brown bread;E;2.25;grains;bread;B;B
-chocolate bread;E;2.45;grains;bread;B;D
-nutella;F;4.1;spreads;choco;C;E
-1brand choco spread;F;spreads;choco;B;E
+name;pos_id;price;category;eco;nutri
+carrot;10;0.5;vegetables;A;A
+salad;10;0.25;vegetables;A;A
+tomato;10;0.4;vegetables;A;A
+onion;10;0.1;vegetables;A;B
+avocado;10;0.5;vegetables;C;B
+eggplant;14;0.65;vegetables;C;A
+courgette;14;0.55;vegetables;B;A
+sjalotte;14;0.2;vegetables;C;C
+garlic;14;0.14;vegetables;D;B
+mushroom;14;0.23;vegetables;B;B
+apple;3;0.5;fruit;B;A
+pear;3;0.4;fruit;A;B
+banana;3;0.25;fruit;D;B
+starfruit;3;0.65;fruit;E;A
+raspberry;12;1.75;fruit;C;C
+strawberry;12;1.55;fruit;B;C
+grape;12;1.21;fruit;C;B
+chips;5;0.75;snacks;C;D
+cookie;5;0.50;snacks;C;E
+candy;7;0.40;snacks;D;E
+cracker;7;0.55;snacks;B;B
+steak;4;5;meat;D;C
+pork;4;4.5;dairy;E;D
+veal;6;6.25;dairy;D;B
+mutton;6;5.45;dairy;C;B
+milk;2;1.2;dairy;C;B
+cheese;2;2.5;dairy;C;C
+yoghurt;11;2;dairy;B;B
+creme;11;2.5;dairy;C;D
+bread;9;2;grains;B;C
+spaghetti;9;1.75;grains;C;C
+potato;13;2.25;grains;A;B
+toast;13;1;grains;C;D
+PC;6;600;other;D;E
