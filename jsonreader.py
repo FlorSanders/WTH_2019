@@ -43,21 +43,21 @@ with open('market.json') as json_file:
     groceryStops = [2,14,11]
 
     intersections = {"a","b"}
-    for edge in edges:
-        if edge["id"] in groceryStops:
-            intersections.add(splitEdge(vertices,edges,edge))
+    #for edge in edges:
+     #   if edge["id"] in groceryStops:
+      #      intersections.add(splitEdge(vertices,edges,edge))
 
 
     # We define visiting an Aisle as going from one end to the other - i.e. visiting both vertices.
     # This also allows for defining an aisle as several smaller segments, allowing to enter an aisle for a bit and then returning.
-    targetaisles = []
+    targetaisles = set()
     #entry and exit will always be visited
     for aisle in groceryStops:
         for edge in edges:
             if edge["id"] == aisle:
                 intersections.add(edge["u"])
                 intersections.add(edge["v"])
-                targetaisles.append((edge["u"],edge["v"]))
+                targetaisles.add((edge["u"],edge["v"]))
 
     #Make relevant graph:
     G=nx.Graph()
@@ -104,7 +104,14 @@ with open('market.json') as json_file:
     for path in permutations(TSP.nodes):
         if (path[0] == "b" and path[-1] == "a"):
             length = pathLength(TSP,path)
-            if length < shortest:
+            
+            #In the spirit of the hackathon: A hack.
+            pathpermutations = set()
+            [pathpermutations.add((path[n],path[n+1])) for n in range(len(path)-1)]
+            [pathpermutations.add((path[n+1],path[n])) for n in range(len(path)-1)]
+
+
+            if length < shortest and targetaisles.issubset(pathpermutations):
                 shortest = length
                 bestPath = path
 
