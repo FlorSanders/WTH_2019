@@ -94,7 +94,7 @@ class profile:
 
 
 ##################"TESTING AREA"#############################
-market = supermarket([], [])
-market.sm_from_file("supermarket.txt")
-my_item = market.search_item("baNana")
-print(my_item.pos_id)
+#market = supermarket([], [])
+#market.sm_from_file("supermarket.txt")
+#my_item = market.search_item("baNana")
+#print(my_item.pos_id)
