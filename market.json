@@ -1,0 +1,36 @@
+{"superstore":{
+    "edges": [
+        {"id":0,"v":"a","u":"d","length":1},
+        {"id":1,"v":"b","u":"g","length":1},
+        {"id":2,"v":"c","u":"d","length":1},
+        {"id":3,"v":"d","u":"e","length":1},
+        {"id":4,"v":"e","u":"f","length":1},
+        {"id":5,"v":"f","u":"g","length":1},
+        {"id":6,"v":"c","u":"h","length":3},
+        {"id":7,"v":"d","u":"i","length":3},
+        {"id":8,"v":"e","u":"j","length":3},
+        {"id":9,"v":"f","u":"k","length":3},
+        {"id":10,"v":"g","u":"l","length":3},
+        {"id":11,"v":"h","u":"i","length":1},
+        {"id":12,"v":"i","u":"j","length":1},
+        {"id":13,"v":"j","u":"k","length":1},
+        {"id":14,"v":"k","u":"l","length":1}  
+    ],
+    "vertices":[
+        {"id":"a","x":0,"y":1},
+        {"id":"b","x":0,"y":4},
+        {"id":"c","x":1,"y":0},
+        {"id":"d","x":1,"y":1},
+        {"id":"e","x":1,"y":2},
+        {"id":"f","x":1,"y":3},
+        {"id":"g","x":1,"y":4},
+        {"id":"h","x":4,"y":0},
+        {"id":"i","x":4,"y":1},
+        {"id":"j","x":4,"y":2},
+        {"id":"k","x":4,"y":3},
+        {"id":"l","x":4,"y":4}
+    ],
+
+    "products":"supermarket.txt"
+}
+}
