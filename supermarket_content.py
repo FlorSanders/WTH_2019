@@ -50,6 +50,10 @@ class supermarket:
         return self.cats
     def get_pricelist(self):                                    #Gives the supermarket pricelist
         return self.pricelist
+    def search_item(self, term):                                #Receives a string which it uses to look for an item in the supermarket
+        for item in self.items:
+            if item.name == term.lower():
+                return item
              
 class shoppinglist:
     #Initialisation function
@@ -90,3 +94,7 @@ class profile:
 
 
 ##################"TESTING AREA"#############################
+market = supermarket([], [])
+market.sm_from_file("supermarket.txt")
+my_item = market.search_item("baNana")
+print(my_item.pos_id)
