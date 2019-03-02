@@ -32,7 +32,7 @@ def splitEdge(vertices, edges, targetEdge):
     return name
 
 #Load Market Schematics - enables switching to different store layouts
-def get_path(profile, show = 0):
+def get_path(profile,groceryStops=[], show = 0):
     with open('market.json') as json_file:
         marketdata = json.load(json_file)
         superstore = marketdata["superstore"]
@@ -41,7 +41,6 @@ def get_path(profile, show = 0):
 
         #Test values for testing
         #edges that have to be visited
-        groceryStops = [2,14,11]
 
         intersections = {"a","b"}
         #for edge in edges:
@@ -63,6 +62,7 @@ def get_path(profile, show = 0):
         #Make relevant graph:
         G=nx.Graph()
         #fill graph
+
         for vert in vertices:
             G.add_node(vert["id"], pos=(vert["y"],vert["x"]))
         for edge in edges:
@@ -72,12 +72,12 @@ def get_path(profile, show = 0):
         #set positions and add weight labels, and draw
         pos=nx.get_node_attributes(G,'pos')
         edge_labels=dict([((u,v,),d['weight']) for u,v,d in G.edges(data=True)])
-        plt.figure(1)
-        nx.draw_networkx_edge_labels(G,pos,edge_labels=edge_labels)
-        nx.draw_networkx_edges(G,pos=pos,edgelist=targetaisles,edge_color = "g", width=4)
-        nx.draw(G,pos,with_labels = True)
+        #plt.figure(1)
+        #nx.draw_networkx_edge_labels(G,pos,edge_labels=edge_labels)
+        #nx.draw_networkx_edges(G,pos=pos,edgelist=targetaisles,edge_color = "g", width=4)
+        #nx.draw(G,pos,with_labels = True)
 
-        #Take relevant verticies and build a complete graph from it - each edge having the shortest path in G between the two vertices.
+        #Take relevant vertlicies and build a complete graph from it - each edge having the shortest path in G between the two vertices.
         TSP=nx.Graph()
         for intersec in intersections:
             for vert in vertices:
@@ -91,12 +91,12 @@ def get_path(profile, show = 0):
 
         # Draw the intermediary result for debugging purposes.
 
-        pos=nx.get_node_attributes(TSP,'pos')
+        #pos=nx.get_node_attributes(TSP,'pos')
 
-        edge_labels=dict([((u,v,),d['weight']) for u,v,d in TSP.edges(data=True)])
-        plt.figure(2)
-        nx.draw_networkx_edge_labels(TSP,pos,edge_labels=edge_labels)
-        nx.draw(TSP,pos,with_labels=True)
+        #edge_labels=dict([((u,v,),d['weight']) for u,v,d in TSP.edges(data=True)])
+        #plt.figure(2)
+        #nx.draw_networkx_edge_labels(TSP,pos,edge_labels=edge_labels)
+        #nx.draw(TSP,pos,with_labels=True)
 
 
         # Traveling Salesman Problem - throw some brute force at this problem.
@@ -131,15 +131,11 @@ def get_path(profile, show = 0):
         pos=nx.get_node_attributes(G,'pos')
         edge_labels=dict([((u,v,),d['weight']) for u,v,d in G.edges(data=True)])
         nx.draw_networkx_edge_labels(G,pos,edge_labels=edge_labels)
-        nx.draw_networkx_edges(G,pos=pos,edgelist=route_edges,edge_color = "r", width=5)
+        nx.draw_networkx_edges(G,pos=pos,edgelist=route_edges,edge_color = "g", width=5)
         nx.draw_networkx_edges(G,pos=pos,edgelist=targetaisles,edge_color = "b", width=4)
 
         nx.draw(G,pos,with_labels = True)
         if(show):
-            plt.show()
+            plt.savefig("Graph.png", format="PNG")
         return route_edges
 
-###############TESTING AREA########################
-example = smc.profile({0: 1, 1: 0.5, 2: 0.75, 3: 1.25, 4: 1, 5: 10, 6: 0.01, 7: 0.1, 8:5, 9: 1, 10: 1, 11: 2, 12: 1.5, 13:2, 14: 7})
-print(example.weights[0])
-get_path(example, show=1)

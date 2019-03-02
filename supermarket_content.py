@@ -64,9 +64,9 @@ class shoppinglist:
     def categories(self):                                       #Returns a set with all the unique categories of the items on the shoppinglist
         return set([item.cat for item in self.items])           
     def pos_ids(self):                                          #Returns a set with all the unique position ids for the items on the shoppinglist
-        return set([item.pos_id for item in self.items])        
+        return set([int(item.pos_id) for item in self.items])        
     def add_to_list(self, add_item):                            #Adds an item to the shopping list
-        self.items.append(add_item)                             
+        self.items.append(add_item)                   
     def rem_from_list(self, rem_item):
         if rem_item in self.items:                              #Checks whether the item is in the shopping list
             self.items.remove(rem_item)                         #And removes it if it is
