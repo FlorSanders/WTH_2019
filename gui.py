@@ -34,6 +34,12 @@ class SampleApp(tk.Tk):
         self.waititem.set(self.waitOptions[5])
         self.waitdropdown = tk.OptionMenu(self, self.waititem, *self.waitOptions)
         self.waitButton = tk.Button(self, text="Show", command =self.show_wait)
+        #Perfect hour to go printer
+        self.timevalue = 0
+        self.timeButton = tk.Button(self, text="Give ideal shopping time", command = self.show_time)
+        self.timestring = "The ideal time to go shopping is: " + str(self.timevalue)
+        self.called = 0
+        self.timeLabel = tk.Label(self, text=self.timestring)
         #Configuring application structure
         self.entryLabel.pack()
         self.entry.pack()
@@ -48,6 +54,8 @@ class SampleApp(tk.Tk):
         self.waitLabel.pack()
         self.waitdropdown.pack()
         self.waitButton.pack()
+        self.timeButton.pack()
+        self.timeLabel.pack()
         #image = Image.open('image.png')
         #display = ImageTk.PhotoImage(Image.open(image))
 #
@@ -63,7 +71,7 @@ class SampleApp(tk.Tk):
 
     def find_route(self):
         posset = self.shoppinglist.pos_ids()
-        routing.get_path(self.profile,groceryStops=posset,show=1)
+        routing.get_path(self.profile,groceryStops=posset,show=1, createAnim=1)
     
     def add_recipe(self):
         recipe = self.recipitem.get()
@@ -84,6 +92,12 @@ class SampleApp(tk.Tk):
     def show_wait(self):
         day = self.waititem.get()
         self.supermarket.get_waiting_time(day)
+    
+    def show_time(self):
+        day = self.waititem.get()
+        self.timevalue = self.supermarket.get_ideal_time(day)
+        self.timestring = "The ideal time to go shopping is: " + str(self.timevalue)
+        self.timeLabel['text'] = self.timestring
 
 
 app = SampleApp()

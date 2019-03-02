@@ -23,7 +23,7 @@ class supermarket:
         self.items = items                                      #List of the items available at the supermarket
         self.cats = categories                                  #List of categories in the supermarket
         self.pricelist = {}                                     #Price table for the products in the supermarket
-        self.table = {"Monday":  [1,2,4,7,3,2,4,8,10,8,3], "Tuesday":  [1,3,4,7,3,5,4,8,10,8,3], "Wednesday":  [1,3,4,6,3,5,4,8,7,8,3], "Thursday":  [1,3,4,6,3,5,4,5,7,5,3], "Friday":  [1,3,4,5,8,5,4,7,11,9,3], "Saturday":  [1,3,4,5,7,4,4,7,8,5,3], "Sunday":  [2,2,4,5,7,4,3,7,8,4,3]}
+        self.table = {"Monday":  [3,3,4,7,3,2,4,8,10,8,3], "Tuesday":  [4,3,4,7,2,5,4,8,10,8,3], "Wednesday":  [1,3,4,6,3,5,4,8,7,8,3], "Thursday":  [3,3,4,6,3,5,4,5,7,5,2], "Friday":  [2,3,4,1,8,5,4,7,11,9,1], "Saturday":  [1,3,4,5,7,4,4,7,8,5,3], "Sunday":  [2,2,4,5,7,4,3,7,8,4,3]}
     def sm_from_file(self, filename):                           #This function reads needed data for a supermarket in from a csv file
         #Opening the file
         with open(filename, 'r') as infile:
@@ -61,12 +61,22 @@ class supermarket:
         objects = range(9, 20)
         y_pos = range(len(objects))
         time = self.table[day]
+        plt.figure(90)
         plt.bar(y_pos, time, align='center', alpha=0.5)
         plt.xticks(y_pos, objects)
         plt.ylabel('Usage')
         plt.title('Programming language usage')
  
-        plt.show()
+        plt.show(90)
+    def get_ideal_time(self, day):
+        ival = 20
+        iarg = 1
+        for i in range(len(self.table[day])):
+            val = self.table[day][i]
+            if val < ival:
+                ival = val
+                iarg = i + 9
+        return iarg
              
 class shoppinglist:
     #Initialisation function
