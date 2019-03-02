@@ -1,6 +1,7 @@
 name;pos_id;price;category;eco;nutri
 carrot;10;0.5;vegetables;A;A
-salad;10;0.25;vegetables;A;A
+lettuce;10;0.25;vegetables;A;A
+sprouts;10;2;vegetables;A;A
 tomato;10;0.4;vegetables;A;A
 onion;10;0.1;vegetables;A;B
 avocado;10;0.5;vegetables;C;B
@@ -24,6 +25,7 @@ steak;4;5;meat;D;C
 pork;4;4.5;dairy;E;D
 veal;6;6.25;dairy;D;B
 mutton;6;5.45;dairy;C;B
+burger;6;4.5;dairy;C;B
 milk;2;1.2;dairy;C;B
 cheese;2;2.5;dairy;C;C
 yoghurt;11;2;dairy;B;B

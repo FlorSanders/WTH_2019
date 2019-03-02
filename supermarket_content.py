@@ -23,7 +23,7 @@ class supermarket:
         self.items = items                                      #List of the items available at the supermarket
         self.cats = categories                                  #List of categories in the supermarket
         self.pricelist = {}                                     #Price table for the products in the supermarket
-        self.table = {"Monday":  [1,1,1,1,1,1,1,1,1,1,1], "Tuesday":  [1,1,1,1,1,1,1,1,1,1,1], "Wednesday":  [1,1,1,1,1,1,1,1,1,1,1], "Thursday":  [1,1,1,1,1,1,1,1,1,1,1], "Friday":  [1,1,1,1,1,1,1,1,1,1,1], "Saturday":  [1,1,1,1,1,1,1,1,1,1,1], "Sunday":  [1,1,1,1,1,1,1,1,1,1,1]}
+        self.table = {"Monday":  [1,2,4,7,3,2,4,8,10,8,3], "Tuesday":  [1,3,4,7,3,5,4,8,10,8,3], "Wednesday":  [1,3,4,6,3,5,4,8,7,8,3], "Thursday":  [1,3,4,6,3,5,4,5,7,5,3], "Friday":  [1,3,4,5,8,5,4,7,11,9,3], "Saturday":  [1,3,4,5,7,4,4,7,8,5,3], "Sunday":  [2,2,4,5,7,4,3,7,8,4,3]}
     def sm_from_file(self, filename):                           #This function reads needed data for a supermarket in from a csv file
         #Opening the file
         with open(filename, 'r') as infile:
@@ -103,10 +103,20 @@ class profile:
         return "%s" %(self.weights)
     def get_weights(self):
         return self.weights
-    
+
+#Basic character profiles
 default = profile([1]*15)
 health = profile([1,1,2,0.1,3,3,1,3,3,1.5,0.1,2,0.1,1.5,0.1])
 party = profile([1,1,1,3,0.7,0.1,1,0.1,0.7,1,3,1,3,1,3])
+
+#Starting a market to get items from
+mt = supermarket([], [])
+mt.sm_from_file("supermarket.txt")
+
+#Basic recipe shopping list
+bolognese = shoppinglist([mt.search_item("tomato"),mt.search_item("garlic"),mt.search_item("onion"),mt.search_item("pork"),mt.search_item("spaghetti"),mt.search_item("courgette")])
+burger = shoppinglist([mt.search_item("burger"), mt.search_item("bread"), mt.search_item("cheese"), mt.search_item("lettuce"), mt.search_item("tomato")])
+season = shoppinglist([mt.search_item("sprouts"), mt.search_item("steak"), mt.search_item("potato")])
 
 ##################"TESTING AREA"#############################
 #market = supermarket([], [])
