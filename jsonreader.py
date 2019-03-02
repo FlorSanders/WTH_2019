@@ -140,5 +140,6 @@ def get_path(profile, show = 0):
         return route_edges
 
 ###############TESTING AREA########################
-example = smc.profile({"a": 1, "b": 0.5, "c": 0.75, "d": 1.25, "e": 1, "f": 10, "g": 0.01, "h": 0.1, "i":5, "j": 1, "k": 1, "l": 2})
-print(example.weights['d'])
+example = smc.profile({0: 1, 1: 0.5, 2: 0.75, 3: 1.25, 4: 1, 5: 10, 6: 0.01, 7: 0.1, 8:5, 9: 1, 10: 1, 11: 2, 12: 1.5, 13:2, 14: 7})
+print(example.weights[0])
+get_path(example, show=1)
