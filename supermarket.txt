@@ -1,5 +1,9 @@
-name;pos_id;price;category;eco;nutri
-carrot;A;0.5;vegetables;A;A
-tomato;A;0.25;vegetables;A;A
-avocado;B;1.25;vegetables;D;B
-bread;E;2;grains;B;C
+name;pos_id;price;category;type;eco;nutri
+winter carrot;A;0.5;vegetables;carrot;A;A
+large tomato;A;0.25;vegetables;tomato;A;A
+1brand avocado;B;1.25;vegetables;avocado;D;B
+white bread;E;2;grains;bread;B;C
+brown bread;E;2.25;grains;bread;B;B
+chocolate bread;E;2.45;grains;bread;B;D
+nutella;F;4.1;spreads;choco;C;E
+1brand choco spread;F;spreads;choco;B;E

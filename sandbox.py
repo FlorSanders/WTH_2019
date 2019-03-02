@@ -72,6 +72,13 @@ class shoppinglist:
         for it in self.items:
             price += pricelist[it.name]
         return price
+    def compare_supermarkets(self, markets):                    #Compares supermarkets from a list, returns dictionary with market:price combination
+        prices = {}                                             
+        for market in markets:
+            price = self.get_total_price(market)
+            prices[market] = price
+        return prices
+        
 
 
 
