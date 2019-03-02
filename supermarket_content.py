@@ -1,5 +1,7 @@
 #Importing csv: to read the content of a supermarket or shopping list from a simple csv file
 import csv
+import matplotlib.pyplot as plt
+import numpy as np
 
 #Creating the necessary classes for the contents of the super market, shopping list and items themselves 
 class item:
@@ -21,6 +23,7 @@ class supermarket:
         self.items = items                                      #List of the items available at the supermarket
         self.cats = categories                                  #List of categories in the supermarket
         self.pricelist = {}                                     #Price table for the products in the supermarket
+        self.table = {"Monday":  [1,1,1,1,1,1,1,1,1,1,1], "Tuesday":  [1,1,1,1,1,1,1,1,1,1,1], "Wednesday":  [1,1,1,1,1,1,1,1,1,1,1], "Thursday":  [1,1,1,1,1,1,1,1,1,1,1], "Friday":  [1,1,1,1,1,1,1,1,1,1,1], "Saturday":  [1,1,1,1,1,1,1,1,1,1,1], "Sunday":  [1,1,1,1,1,1,1,1,1,1,1]}
     def sm_from_file(self, filename):                           #This function reads needed data for a supermarket in from a csv file
         #Opening the file
         with open(filename, 'r') as infile:
@@ -54,6 +57,16 @@ class supermarket:
         for item in self.items:
             if item.name == term.lower():
                 return item
+    def get_waiting_time(self, day):
+        objects = range(9, 20)
+        y_pos = range(len(objects))
+        time = self.table[day]
+        plt.bar(y_pos, time, align='center', alpha=0.5)
+        plt.xticks(y_pos, objects)
+        plt.ylabel('Usage')
+        plt.title('Programming language usage')
+ 
+        plt.show()
              
 class shoppinglist:
     #Initialisation function
