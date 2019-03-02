@@ -3,6 +3,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import supermarket_content as smc
 from itertools import permutations
+import imageio
 
 
 def pathLength(graph, path):
@@ -32,7 +33,7 @@ def splitEdge(vertices, edges, targetEdge):
     return name
 
 #Load Market Schematics - enables switching to different store layouts
-def get_path(profile,groceryStops=[], show = 0):
+def get_path(profile,groceryStops=[], show = 0, createAnim = 0):
     with open('market.json') as json_file:
         marketdata = json.load(json_file)
         superstore = marketdata["superstore"]
@@ -137,5 +138,31 @@ def get_path(profile,groceryStops=[], show = 0):
         nx.draw(G,pos,with_labels = True)
         if(show):
             plt.savefig("Graph.png", format="PNG")
+
+
+
+        edgelst = set()
+        if(createAnim):
+            for i,edge in enumerate(route_edges):
+                edgelst.add(edge)
+                plt.figure(4 + i)
+                pos=nx.get_node_attributes(G,'pos')
+                edge_labels=dict([((u,v,),d['weight']) for u,v,d in G.edges(data=True)])
+                nx.draw_networkx_edge_labels(G,pos,edge_labels=edge_labels)
+                nx.draw_networkx_edges(G,pos=pos,edgelist=edgelst,edge_color = "g", width=5)
+                nx.draw_networkx_edges(G,pos=pos,edgelist=targetaisles,edge_color = "b", width=4)
+                nx.draw(G,pos,with_labels = True)
+                plt.savefig("test/"+str(i)+".png", format="PNG")
+            
+
+            images = []
+            for i,edge in enumerate(route_edges):
+                images.append(imageio.imread("test/"+str(i)+".png"))
+                imageio.mimsave('anim.gif', images)
+                
         return route_edges
+
+
+
+
 
