@@ -91,10 +91,12 @@ class profile:
     def get_weights(self):
         return self.weights
     
-
+default = profile([1]*15)
+health = profile([1,1,2,0.1,3,3,1,3,3,1.5,0.1,2,0.1,1.5,0.1])
+party = profile([1,1,1,3,0.7,0.1,1,0.1,0.7,1,3,1,3,1,3])
 
 ##################"TESTING AREA"#############################
 #market = supermarket([], [])
 #market.sm_from_file("supermarket.txt")
-#my_item = market.search_item("baNana")
+#my_item = market.search_item("bread")
 #print(my_item.pos_id)
