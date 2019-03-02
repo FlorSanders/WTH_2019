@@ -79,25 +79,14 @@ class shoppinglist:
             prices[market] = price
         return prices
         
-
+class profile:
+    def __init__(self, weights):
+        self.weights = weights
+    def __repr__(self):
+        return "%s" %(self.weights)
+    def get_weights(self):
+        return self.weights
+    
 
 
 ##################"TESTING AREA"#############################
-#Don't mind me, just initializing a few variables for testing
-market = supermarket([],[])
-slist = shoppinglist([])
-
-market.sm_from_file("supermarket.txt")
-print(market.get_items_sorted(sorttype="eco", rev=1))
-print(market.get_categories())
-print(market.get_pricelist())
-
-#Don't mind me, just testing the shopping_list functionality
-its = market.get_items()
-for i in range(len(its)):
-    if(i % 2):
-        slist.add_to_list(its[i])
-
-print(slist)
-print(slist.pos_ids())
-print(slist.get_total_price(market))
